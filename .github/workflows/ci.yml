@@ -22,4 +22,19 @@ jobs:
         run: raco make app/backend.rkt
       - name: Test
         run: raco test tests/
-
+      - name: Validate generated config with pinned Xray
+        env:
+          XRAY_VERSION: v26.3.27
+          XRAY_SHA256: 23cd9af937744d97776ee35ecad4972cf4b2109d1e0fe6be9930467608f7c8ae
+        run: |
+          mkdir -p "$RUNNER_TEMP/relaypilot-xray"
+          curl --fail --location --retry 3 \
+            "https://github.com/XTLS/Xray-core/releases/download/${XRAY_VERSION}/Xray-linux-64.zip" \
+            --output "$RUNNER_TEMP/relaypilot-xray/xray.zip"
+          echo "${XRAY_SHA256}  $RUNNER_TEMP/relaypilot-xray/xray.zip" | sha256sum --check
+          unzip -q "$RUNNER_TEMP/relaypilot-xray/xray.zip" -d "$RUNNER_TEMP/relaypilot-xray/runtime"
+          racket scripts/compile-profile.rkt \
+            examples/relay-profile.json \
+            "$RUNNER_TEMP/relaypilot-xray/config.json"
+          "$RUNNER_TEMP/relaypilot-xray/runtime/xray" run -test \
+            -config "$RUNNER_TEMP/relaypilot-xray/config.json"

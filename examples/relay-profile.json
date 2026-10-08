@@ -21,7 +21,7 @@
         "security": "reality",
         "serverName": "www.example.com",
         "fingerprint": "chrome",
-        "password": "TEST-ONLY-REALITY-PASSWORD",
+        "password": "_sKXlDxML1jPH0db1XnDaEJ0988HnBbcklCvOMwL0DE",
         "shortId": "0123456789abcdef",
         "spiderX": "/"
       }
@@ -47,4 +47,3 @@
     "bootstrap": []
   }
 }
-

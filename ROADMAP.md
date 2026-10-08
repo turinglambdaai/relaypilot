@@ -14,8 +14,9 @@
 
 ## M1 — First real engine session
 
-- Pin a reviewed libXray/Xray release and record checksums/provenance
-- Validate generated configuration with that exact binary in CI
+- [x] Pin Xray v26.3.27 for configuration compatibility and record checksums/provenance
+- [x] Validate generated configuration with that exact binary in CI
+- [ ] Pin the platform-specific libXray build used by the first runtime host
 - Add a supervised process/library lifecycle adapter and structured event bridge
 - Run a real loopback SOCKS request through a local test endpoint
 - Keep credentials synthetic in CI and add third-party notices/source-offer workflow
@@ -37,4 +38,3 @@
 ## Later
 
 iOS/iPadOS/tvOS NetworkExtension, Android VpnService, Linux daemon/TUN, subscriptions, iCloud Drive, WebDAV, connection history, richer diagnosis, and carefully selected NativeEngine capabilities.
-

@@ -20,6 +20,7 @@ RelayPilot is not an “Xray GUI.” RelayPilot owns profiles, rules, policy sel
 - Typed `DiagnosticBundle`, secret redaction, and preconditioned `ConfigPatch`
 - Rivet RPC boundary for route explanation and deterministic engine compilation
 - 40 passing Racket tests on the initial implementation, including an RVT1 round trip
+- CI validation of the generated example with checksum-pinned Xray v26.3.27 in `run -test` mode
 
 The repository does **not** yet contain a runnable VPN app, TUN integration, a bundled Xray/libXray binary, native screens, background services, subscriptions, production DNS, or commercial infrastructure.
 
@@ -68,6 +69,12 @@ Compile the included non-secret example through the RPC boundary:
 
 ```bash
 racket -e '(require "app/core/profile/json.rkt" "app/core/engines/xray.rkt") (compile-xray-config (read-relay-profile (string->path "examples/relay-profile.json")))'
+```
+
+To write a generated artifact for inspection:
+
+```bash
+racket scripts/compile-profile.rkt examples/relay-profile.json /tmp/xray.json
 ```
 
 ## Repository layout

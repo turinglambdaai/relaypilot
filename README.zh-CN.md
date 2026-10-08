@@ -18,6 +18,7 @@ RelayPilot 不是“Xray GUI”。Profile、规则、策略组选择、DNS 意�
 - typed `DiagnosticBundle`、脱敏和带前置条件的 `ConfigPatch`
 - 给各平台原生 UI 使用的 Rivet typed RPC
 - 初始实现本地 40 项 Racket 测试通过，包含 RVT1 往返验证
+- CI 使用 SHA-256 固定的 Xray v26.3.27，以 `run -test` 验证生成配置
 
 仓库目前**还不是可运行 VPN 客户端**：尚未集成 TUN、未打包 Xray/libXray、没有原生界面、后台服务、订阅、生产 DNS 或商业系统。
 
