@@ -2,11 +2,11 @@
 
 One profile. Every device. RelayPilot is a local-first network toolbox for macOS, Windows, Linux, iPhone, iPad, Android, and Apple TV — one Racket control plane, first-party native UIs, and the same network decisions everywhere.
 
-**English** · [中文](README.zh-CN.md) · [Architecture](ARCHITECTURE.md) · [Roadmap](ROADMAP.md)
+**English** · [中文](README.zh-CN.md) · 🌐 [jrtx.site/relaypilot](https://jrtx.site/relaypilot/)
 
-[![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea)
+[![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea) ![license](https://img.shields.io/badge/license-Proprietary-red)
 
-RelayPilot is not an “Xray GUI.” RelayPilot owns profiles, rules, policy selection, DNS intent, connection history, deterministic decision traces, diagnostics, sync boundaries, and typed AI patches. Xray/libXray is the first protocol engine behind an adapter and may later coexist with a native engine or other implementations.
+RelayPilot is not an "Xray GUI." RelayPilot owns profiles, rules, policy selection, DNS intent, connection history, deterministic decision traces, diagnostics, sync boundaries, and typed AI patches. Xray/libXray is the first protocol engine behind an adapter and may later coexist with a native engine or other implementations.
 
 ## What works today
 
@@ -22,7 +22,7 @@ RelayPilot is not an “Xray GUI.” RelayPilot owns profiles, rules, policy sel
 - 40 passing Racket tests on the initial implementation, including an RVT1 round trip
 - CI validation of the generated example with checksum-pinned Xray v26.3.27 in `run -test` mode
 
-The repository does **not** yet contain a runnable VPN app, TUN integration, a bundled Xray/libXray binary, native screens, background services, subscriptions, production DNS, or commercial infrastructure.
+The repository does **not** yet contain a runnable VPN app, TUN integration, a bundled Xray/libXray binary, native screens, background services, subscriptions, production DNS, or commercial infrastructure. What ships next is tracked in [ROADMAP.md](ROADMAP.md); the control-plane design in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## First vertical slice
 
@@ -55,7 +55,7 @@ The same RelayPilot evaluator that explains a route is the source of the adapter
 
 See [platform maturity](docs/platform-maturity.md) for the exact boundary.
 
-## Develop
+## Build and test
 
 Requires Racket CS 9.x and [Rivet](https://github.com/turinglambdaai/rivet):
 

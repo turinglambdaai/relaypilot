@@ -2,7 +2,9 @@
 
 一套 Profile，覆盖每一台设备。RelayPilot 是面向 macOS、Windows、Linux、iPhone、iPad、Android 和 Apple TV 的 local-first 原生网络工具箱：一套 Racket 控制平面，各平台第一方原生 UI，同样的网络决策与解释体验。
 
-[English](README.md) · **中文** · [架构](ARCHITECTURE.md) · [路线图](ROADMAP.md)
+[English](README.md) · **中文** · 🌐 [jrtx.site/relaypilot](https://jrtx.site/relaypilot/)
+
+[![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea) ![license](https://img.shields.io/badge/license-Proprietary-red)
 
 RelayPilot 不是“Xray GUI”。Profile、规则、策略组选择、DNS 意图、连接记录、`DecisionTrace`、诊断、同步边界和 AI 的 typed patch 都属于 RelayPilot。Xray/libXray 只是第一个可替换的协议引擎。
 
@@ -20,7 +22,7 @@ RelayPilot 不是“Xray GUI”。Profile、规则、策略组选择、DNS 意�
 - 初始实现本地 40 项 Racket 测试通过，包含 RVT1 往返验证
 - CI 使用 SHA-256 固定的 Xray v26.3.27，以 `run -test` 验证生成配置
 
-仓库目前**还不是可运行 VPN 客户端**：尚未集成 TUN、未打包 Xray/libXray、没有原生界面、后台服务、订阅、生产 DNS 或商业系统。
+仓库目前**还不是可运行 VPN 客户端**：尚未集成 TUN、未打包 Xray/libXray、没有原生界面、后台服务、订阅、生产 DNS 或商业系统。下一步见[路线图](ROADMAP.md)，控制平面设计见[架构](ARCHITECTURE.md)。
 
 ## 第一条纵向链路
 
@@ -53,7 +55,7 @@ canonical Xray JSON + SHA-256
 
 精确边界见 [平台成熟度](docs/platform-maturity.md)。
 
-## 开发
+## 构建与测试
 
 需要 Racket CS 9.x 和 [Rivet](https://github.com/turinglambdaai/rivet)：
 
@@ -61,6 +63,40 @@ canonical Xray JSON + SHA-256
 raco pkg install --auto --no-docs rivet
 raco make app/backend.rkt
 raco test tests/
+```
+
+通过 RPC 边界编译仓库自带的非保密示例：
+
+```bash
+racket -e '(require "app/core/profile/json.rkt" "app/core/engines/xray.rkt") (compile-xray-config (read-relay-profile (string->path "examples/relay-profile.json")))'
+```
+
+如需写出产物检查：
+
+```bash
+racket scripts/compile-profile.rkt examples/relay-profile.json /tmp/xray.json
+```
+
+## 仓库结构
+
+```text
+relaypilot/
+├── rivet.rktd                 # Rivet 应用契约
+├── app/backend.rkt            # 面向原生 host 的 typed RPC 边界
+├── app/core/
+│   ├── profile/               # canonical Relay Profile
+│   ├── rules/                 # Surge 语法 + 确定性求值器
+│   ├── policy/                # 策略组选择
+│   ├── engines/               # adapter 契约 + Xray 编译器
+│   ├── diagnostics/           # DecisionTrace 诊断包
+│   ├── storage/               # local-first 存储边界
+│   └── ai/                    # 脱敏 + typed ConfigPatch
+├── tests/                     # 领域与 adapter 契约测试
+├── examples/                  # 合成的非保密 profile 与规则
+├── macos-host/ windows/ linux/# 第一方桌面 host（计划中）
+├── apple/ android/            # 移动/TV 隧道 host（计划中）
+├── docs/                      # 产品与工程契约
+└── site/                      # 静态产品站
 ```
 
 ## 产品约束
