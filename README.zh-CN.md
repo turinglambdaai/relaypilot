@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea) ![license](https://img.shields.io/badge/license-Proprietary-red) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C)
 
-[English](README.md) · **中文** · 🌐 [jrtx.site/relaypilot](https://jrtx.site/relaypilot/)
+[English](README.md) · **中文** · 🌐 [relaypilot.jrtx.site](https://relaypilot.jrtx.site)
 
 
 ## 第一条纵向链路
