@@ -2,9 +2,9 @@
 
 一套 Profile，覆盖每一台设备。RelayPilot 是面向 macOS、Windows、Linux、iPhone、iPad、Android 和 Apple TV 的 local-first 原生网络工具箱：一套 Racket 控制平面，各平台第一方原生 UI，同样的网络决策与解释体验。
 
+[![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea) ![license](https://img.shields.io/badge/license-Proprietary-red) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C)
 [English](README.md) · **中文** · 🌐 [jrtx.site/relaypilot](https://jrtx.site/relaypilot/)
 
-[![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea) ![license](https://img.shields.io/badge/license-Proprietary-red)
 
 RelayPilot 不是“Xray GUI”。Profile、规则、策略组选择、DNS 意图、连接记录、`DecisionTrace`、诊断、同步边界和 AI 的 typed patch 都属于 RelayPilot。Xray/libXray 只是第一个可替换的协议引擎。
 
