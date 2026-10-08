@@ -4,8 +4,25 @@
 
 [![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea) ![license](https://img.shields.io/badge/license-Proprietary-red) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C)
 
-[English](README.md) · **中文** · 🌐 [relaypilot.jrtx.site](https://relaypilot.jrtx.site)
+[English](README.md) · **中文** · 🌐 [jrtx.site/relaypilot](https://jrtx.site/relaypilot/)
 
+RelayPilot 不是“Xray GUI”。Profile、规则、策略组选择、DNS 意图、连接记录、`DecisionTrace`、诊断、同步边界和 AI 的 typed patch 都属于 RelayPilot。Xray/libXray 只是第一个可替换的协议引擎。
+
+## 当前已经实现
+
+- Canonical Relay Profile JSON：校验与稳定往返序列化
+- Surge 兼容规则导入：`DOMAIN`、`DOMAIN-SUFFIX`、`IP-CIDR`、`IP-CIDR6`、`GEOIP`、`FINAL`、`MATCH`
+- `DOMAIN`、`DOMAIN-SUFFIX`、IPv4 CIDR、最终规则的本地确定性求值
+- select/fallback 策略组、显式选择、循环检测
+- `DecisionTrace`：规则来源、策略解析、最终 outbound、步骤、告警、稳定 trace ID
+- 第一段 Xray adapter：VLESS + RAW/TLS/REALITY、SOCKS ingress、`freedom`/`blackhole`、有序路由、rule tag、source map、canonical JSON、SHA-256
+- 原子写入的本地文件夹 storage 边界
+- typed `DiagnosticBundle`、脱敏和带前置条件的 `ConfigPatch`
+- 给各平台原生 UI 使用的 Rivet typed RPC
+- 初始实现本地 40 项 Racket 测试通过，包含 RVT1 往返验证
+- CI 使用 SHA-256 固定的 Xray v26.3.27，以 `run -test` 验证生成配置
+
+仓库目前**还不是可运行 VPN 客户端**：尚未集成 TUN、未打包 Xray/libXray、没有原生界面、后台服务、订阅、生产 DNS 或商业系统。下一步见[路线图](ROADMAP.md)，控制平面设计见[架构](ARCHITECTURE.md)。
 
 ## 第一条纵向链路
 
