@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "daily-network",
+  "name": "Daily Network",
+  "nodes": [
+    {
+      "id": "us-reality-01",
+      "name": "US Reality 01",
+      "protocol": "vless",
+      "address": "proxy.example.invalid",
+      "port": 443,
+      "credentials": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "encryption": "none",
+        "flow": "xtls-rprx-vision"
+      },
+      "transport": {
+        "network": "raw"
+      },
+      "tls": {
+        "security": "reality",
+        "serverName": "www.example.com",
+        "fingerprint": "chrome",
+        "password": "TEST-ONLY-REALITY-PASSWORD",
+        "shortId": "0123456789abcdef",
+        "spiderX": "/"
+      }
+    }
+  ],
+  "policies": [
+    {
+      "id": "AI",
+      "name": "AI Services",
+      "kind": "select",
+      "members": ["us-reality-01", "DIRECT"],
+      "selected": "us-reality-01"
+    }
+  ],
+  "rules": [
+    "DOMAIN,api.openai.com,AI",
+    "DOMAIN-SUFFIX,openai.com,AI",
+    "IP-CIDR,192.168.0.0/16,DIRECT,no-resolve",
+    "FINAL,DIRECT"
+  ],
+  "dns": {
+    "mode": "system",
+    "bootstrap": []
+  }
+}
+

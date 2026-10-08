@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  racket:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Bogdanp/setup-racket@v1.14
+        with:
+          version: stable
+          architecture: x64
+      - name: Install package
+        run: raco pkg install --auto --no-docs --name relaypilot "$GITHUB_WORKSPACE"
+      - name: Compile Rivet backend
+        run: raco make app/backend.rkt
+      - name: Test
+        run: raco test tests/
+

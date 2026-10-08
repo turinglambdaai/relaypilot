@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RelayPilot — 一套可解释的网络，覆盖你的每一台设备。">
+  <title>RelayPilot — 你的网络，每一台设备</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav><a class="brand" href="#">RelayPilot</a><div><a href="#trace">DecisionTrace</a><a href="#platforms">平台</a><a href="index.html">English</a><a class="button small" href="https://github.com/turinglambdaai/relaypilot">GitHub</a></div></nav>
+  <main>
+    <section class="hero"><p class="eyebrow">LOCAL-FIRST 原生网络工具箱</p><h1>你的网络。<br><span>每一台设备。</span></h1><p class="lead">macOS、Windows、Linux、iPhone、iPad、Android 和 Apple TV 使用同一套 Profile 与可解释路由模型。</p><div class="actions"><a class="button" href="https://github.com/turinglambdaai/relaypilot">关注开发进展</a><a class="text-link" href="#status">架构 Alpha →</a></div></section>
+    <section id="trace" class="trace-card"><div class="trace-head"><span>连接 7F3A9C10</span><span class="success">路由已决定</span></div><div class="trace-row"><span class="dot app"></span><div><small>请求</small><strong>api.openai.com:443</strong><p>浏览器 · TCP</p></div></div><div class="connector"></div><div class="trace-row"><span class="dot rule"></span><div><small>规则 1 · profile:daily-network</small><strong>DOMAIN, api.openai.com</strong><p>精确匹配</p></div></div><div class="connector"></div><div class="trace-row"><span class="dot policy"></span><div><small>策略</small><strong>AI → US Reality 01</strong><p>策略组显式选择</p></div></div><div class="connector"></div><div class="trace-row"><span class="dot engine"></span><div><small>ENGINE 边界</small><strong>Xray · VLESS REALITY</strong><p>保留规则源映射</p></div></div></section>
+    <section class="statement"><p>不是另一个按 engine 数据模型做出来的界面。</p><h2>RelayPilot 做出决定。<br>Engine 负责执行。</h2><div class="grid"><article><span>01</span><h3>一套 canonical profile</h3><p>Profile、规则、策略组、DNS 意图与同步不绑定任何 proxy engine。</p></article><article><span>02</span><h3>不依赖 AI 也能解释</h3><p>每条路由都有确定性 trace；AI 只接收有边界、已脱敏的诊断包。</p></article><article><span>03</span><h3>使用你的存储</h3><p>Apple 优先 iCloud Drive，并支持本地文件夹与 WebDAV；不强制账号或云。</p></article></div></section>
+    <section id="platforms" class="platforms"><p class="eyebrow">各平台真原生</p><h2>一致的产品。<br>第一方原生界面。</h2><div class="platform-grid"><span>macOS<small>SwiftUI</small></span><span>Windows<small>WinUI 3</small></span><span>Linux<small>GTK4</small></span><span>iPhone + iPad<small>SwiftUI</small></span><span>Android<small>Compose</small></span><span>Apple TV<small>SwiftUI</small></span></div><p class="honest">这是平台目标，不是已支持声明；native host 与 tunnel path 尚未完成。</p></section>
+    <section id="status" class="status"><p class="eyebrow">架构 ALPHA</p><h2>控制平面已落地。<br>下一步是真实 VPN 路径。</h2><p>Profile 校验、Surge 规则导入、确定性求值、策略选择、DecisionTrace、Xray VLESS/REALITY 编译、本地 storage、诊断脱敏、typed patch 和测试都已进入仓库。</p><a class="text-link" href="https://github.com/turinglambdaai/relaypilot/blob/main/ROADMAP.md">查看诚实路线图 →</a></section>
+  </main>
+  <footer><span>RelayPilot</span><span>Local-first · 原生 · 可解释</span><span>© 2026 turinglambdaai</span></footer>
+</body>
+</html>
+
