@@ -4,7 +4,7 @@ One profile. Every device. RelayPilot is a local-first network toolbox for macOS
 
 [![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea) ![license](https://img.shields.io/badge/license-Proprietary-red) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C)
 
-**English** · [中文](README.zh-CN.md) · 🌐 [jrtx.site/relaypilot](https://jrtx.site/relaypilot/)
+**English** · [中文](README.zh-CN.md) · 🌐 [relaypilot.jrtx.site](https://relaypilot.jrtx.site)
 
 
 ## First vertical slice
