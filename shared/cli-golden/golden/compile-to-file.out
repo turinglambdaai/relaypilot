@@ -1,0 +1,1 @@
+{"adapter":"xray","adapterVersion":"xray-json-v1","inbound":{"listen":"127.0.0.1","port":1080,"protocol":"socks"},"ok":true,"profileId":"daily-network","ruleCount":4,"sha256":"fcf7a3a3b2c43ec7a7c4eae03df1f31d9d4c6a8f6c9a9e27941bdadd9e0e046b","writtenTo":"{{work}}/config.json"}

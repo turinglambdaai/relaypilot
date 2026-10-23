@@ -206,7 +206,8 @@
             (hash-ref (compiled-engine-config-metadata compiled) 'inbound)))
   (cond
     [out-path
-     (define parent (or (path-only out-path) (current-directory)))
+     (define destination (string->path out-path))
+     (define parent (or (path-only destination) (current-directory)))
      (make-directory* parent)
      (define temporary (make-temporary-file "relaypilot-config-~a.tmp" #f parent))
      (dynamic-wind
@@ -216,10 +217,10 @@
           temporary
           (lambda (out) (write-bytes (compiled-engine-config-bytes compiled) out))
           #:exists 'truncate/replace)
-         (rename-file-or-directory temporary out-path #t))
+         (rename-file-or-directory temporary destination #t))
        (lambda ()
          (when (file-exists? temporary) (delete-file temporary))))
-     (hash-set base 'writtenTo (path->string out-path))]
+     (hash-set base 'writtenTo (path->string destination))]
     [else
      (hash-set base 'config (bytes->jsexpr (compiled-engine-config-bytes compiled)))]))
 
