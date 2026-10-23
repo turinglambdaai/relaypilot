@@ -112,3 +112,7 @@ The commercial model is intentionally deferred. The working direction is a one-t
 ## License
 
 Copyright © 2026 turinglambdaai. No open-source license has been granted yet. Third-party engine distributions will carry their own notices and source-offer obligations.
+
+## Feedback and diagnostics
+
+Report reproducible bugs and feature requests through [GitHub Issues](https://github.com/turinglambdaai/relaypilot/issues). Include the release, OS/architecture and steps; inspect and redact diagnostics before sharing. Do not post API keys, license files, vault contents or private documents. For sensitive security reports, follow SECURITY.md when present; otherwise request a private contact route without disclosing sensitive details. Nothing is uploaded automatically.

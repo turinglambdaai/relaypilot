@@ -38,3 +38,9 @@
 ## Later
 
 iOS/iPadOS/tvOS NetworkExtension, Android VpnService, Linux daemon/TUN, subscriptions, iCloud Drive, WebDAV, connection history, richer diagnosis, and carefully selected NativeEngine capabilities.
+
+## 当前交付优先级（2026-10-23）
+
+保留架构 Alpha，暂不销售；下一步仅限 profile→DecisionTrace→adapter dry-run 的可执行纵切，不把目标平台写成已支持。
+
+执行场景与完成标准见[本仓审查 issue](https://github.com/turinglambdaai/relaypilot/issues/1)及家族[交付标准](https://github.com/turinglambdaai/turinglambdaai.github.io/blob/master/docs/PRODUCT-STANDARD.md)。未完成的跨平台、硬件或真实支付验证仍是显式门禁；本节不表示这些验证已通过。后续一次认领一个切片，证据回填本文件与 issue。

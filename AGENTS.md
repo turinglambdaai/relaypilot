@@ -31,3 +31,10 @@ raco test tests/
 
 Runtime/host changes need an end-to-end test on their target OS. Apple native validation belongs on macOS CI; do not claim it from Windows.
 
+
+## 产品交付与下一步（2026-10-23）
+
+- 家族[交付标准](https://github.com/turinglambdaai/turinglambdaai.github.io/blob/master/docs/PRODUCT-STANDARD.md)与[组合策略](https://github.com/turinglambdaai/turinglambdaai.github.io/blob/master/PORTFOLIO.md)是共用政策；本仓具体行为以 `ROADMAP.md` 为准，不复制五库依赖图。
+- 当前执行入口：[产品审查 issue](https://github.com/turinglambdaai/relaypilot/issues/1)。保留架构 Alpha，暂不销售；下一步仅限 profile→DecisionTrace→adapter dry-run 的可执行纵切，不把目标平台写成已支持。
+- 开工先检查干净工作树与远端，以 fast-forward-only 更新并记录 SHA；共享文件一次一个写入者，保留其他 checkout 的未提交工作。
+- 每次只完成一个可验收切片，记录 owned files、依赖 pin、命令/平台/产物证据和回滚。已实现、已发布、实机验收分别陈述；不修改 requirements 或复用旧证据来制造通过。
