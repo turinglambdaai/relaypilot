@@ -26,6 +26,13 @@
   #product-support a:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
   html:lang(en) #product-support .support-zh, html:lang(zh) #product-support .support-en { display:none; }
 </style>
+<style id="product-start-style">
+.product-availability{font-size:.95rem;line-height:1.65;max-width:72ch;margin:18px 0;opacity:.85} .hero .product-availability{margin-left:auto;margin-right:auto}
+.product-start{max-width:1120px;margin:64px auto;padding:32px 24px;border-top:1px solid var(--border,#aaa);font:inherit;line-height:1.65}
+.product-start h2{font-size:clamp(1.7rem,3vw,2.4rem);letter-spacing:-.025em;margin:0 0 16px}.product-start h3{font-size:1.05rem;margin:0 0 10px}.product-start p{margin:0 0 16px;max-width:74ch}.product-start-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:28px 0}.product-start a{text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}.product-start a:focus-visible{outline:2px solid currentColor;outline-offset:5px}.product-start .start-links{display:flex;gap:16px 24px;flex-wrap:wrap}.product-start .start-status{font-weight:600}.product-start .start-limits{font-size:.95em}
+html:lang(en) .reader-zh,html:lang(zh) .reader-en{display:none!important}@media(max-width:700px){.product-start{margin:40px auto;padding:24px 20px}.product-start-grid{grid-template-columns:1fr;gap:18px}}
+</style>
+<style>.lang-menu li.lang-choice{padding:0}.lang-menu .lang-choice button{display:block;width:100%;padding:8px 12px;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}.lang-menu .lang-choice button:focus-visible{outline:2px solid currentColor;outline-offset:-2px;border-radius:4px}</style>
 </head>
 <body>
   <nav class="nav-container">
@@ -42,8 +49,8 @@
             <span id="current-lang-label" data-en="English" data-zh="简体中文">English</span>
           </button>
           <ul class="lang-menu">
-            <li onclick="setLanguage('en')">English</li>
-            <li onclick="setLanguage('zh')">简体中文</li>
+            <li class="lang-choice"><button type="button" onclick="setLanguage('en')">English</button></li>
+            <li class="lang-choice"><button type="button" onclick="setLanguage('zh')">简体中文</button></li>
           </ul>
         </li>
       </ul>
@@ -55,7 +62,8 @@
       <div class="status-pill"><span class="status-dot"></span><span data-en="Architecture alpha · control plane shipped" data-zh="架构 Alpha · 控制平面已交付">Architecture alpha · control plane shipped</span></div>
       <span class="eyebrow" data-en="Local-first network toolbox" data-zh="LOCAL-FIRST 原生网络工具箱">Local-first network toolbox</span>
       <h1><span data-en="Your network." data-zh="你的网络，">Your network.</span> <span class="accent" data-en="Every device." data-zh="每一台设备。">Every device.</span></h1>
-      <p class="lead" data-en="One profile and one explainable routing model across macOS, Windows, Linux, iPhone, iPad, Android, and Apple TV." data-zh="macOS、Windows、Linux、iPhone、iPad、Android 和 Apple TV 使用同一套 Profile 与可解释路由模型。">One profile and one explainable routing model across macOS, Windows, Linux, iPhone, iPad, Android, and Apple TV.</p>
+<p class="reader-en product-availability" lang="en">Free architecture experiment with no sale, subscription or commercial activation. Existing source licence restrictions remain in force.</p><p class="reader-zh product-availability" lang="zh">免费架构实验，不销售、不订阅、不接商业激活；现行源码许可限制仍然有效。</p>
+      <p class="lead" data-en="Architecture alpha: a source CLI, explainable routing and a supervised loopback engine slice. Native platform clients are not released." data-zh="架构 Alpha：源码 CLI、可解释路由与受监督回环引擎纵切。原生平台客户端尚未发布。">Architecture alpha: a source CLI, explainable routing and a supervised loopback engine slice. Native platform clients are not released.</p>
       <div class="hero-buttons">
         <a href="https://github.com/turinglambdaai/relaypilot" class="btn btn-primary" data-en="Follow the build" data-zh="关注开发进展">Follow the build</a>
         <a href="#trace" class="btn btn-secondary" data-en="See how it decides →" data-zh="看它如何决策 →">See how it decides →</a>
@@ -66,7 +74,7 @@
             <div class="window-controls"><span class="traffic-light close"></span><span class="traffic-light minimize"></span><span class="traffic-light maximize"></span></div>
             <div class="window-title">DecisionTrace · connection 7F3A9C10</div>
           </div>
-          <div class="code-body trace-body">
+          <div class="code-body trace-body" id="trace">
             <div class="trace-line"><span class="trace-label" data-en="REQUEST" data-zh="请求">REQUEST</span><span class="trace-main">api.openai.com:443</span><span class="trace-note" data-en="Browser · TCP" data-zh="浏览器 · TCP">Browser · TCP</span></div>
             <div class="trace-line"><span class="trace-label" data-en="RULE 1 · profile:daily-network" data-zh="规则 1 · profile:daily-network">RULE 1 · profile:daily-network</span><span class="trace-main">DOMAIN, api.openai.com</span><span class="trace-note ok" data-en="Matched exactly" data-zh="精确匹配">Matched exactly</span></div>
             <div class="trace-line"><span class="trace-label" data-en="POLICY" data-zh="策略">POLICY</span><span class="trace-main">AI → US Reality 01</span><span class="trace-note" data-en="Explicit group selection" data-zh="策略组显式选择">Explicit group selection</span></div>
@@ -118,7 +126,10 @@
     </div>
   </section>
 
-  <footer>
+  <section id="start-here" class="product-start" aria-label="Get started / 开始使用">
+<h2 class="reader-en " lang="en">Start with one useful session.</h2><h2 class="reader-zh " lang="zh">从一次有效使用开始。</h2><p class="reader-en start-status" lang="en">Free architecture experiment with no sale, subscription or commercial activation. Existing source licence restrictions remain in force.</p><p class="reader-zh start-status" lang="zh">免费架构实验，不销售、不订阅、不接商业激活；现行源码许可限制仍然有效。</p><p class="reader-en " lang="en">Architecture alpha with a source CLI and a loopback engine slice. Desktop/mobile source foundations do not constitute released VPN, TUN or system-wide network clients.</p><p class="reader-zh " lang="zh">架构 Alpha，已有源码 CLI 与回环引擎纵切。桌面或移动源码基础不等于已发布的 VPN、TUN 或系统全局网络客户端。</p><div class="product-start-grid"><article><h3 class="reader-en " lang="en">01</h3><h3 class="reader-zh " lang="zh">01</h3><p class="reader-en " lang="en">Use synthetic profiles and the documented CLI workflow; validate before evaluating a route.</p><p class="reader-zh " lang="zh">使用合成 profile 和已文档化的 CLI 工作流，先校验再求值路由。</p></article><article><h3 class="reader-en " lang="en">02</h3><h3 class="reader-zh " lang="zh">02</h3><p class="reader-en " lang="en">Inspect DecisionTrace and adapter dry-run output before running a pinned engine.</p><p class="reader-zh " lang="zh">运行固定版本引擎前，先检查 DecisionTrace 和适配器 dry-run 输出。</p></article><article><h3 class="reader-en " lang="en">03</h3><h3 class="reader-zh " lang="zh">03</h3><p class="reader-en " lang="en">Keep tests on a disposable loopback setup; do not import real subscriptions or make it your system network path.</p><p class="reader-zh " lang="zh">测试保留在可丢弃的回环环境，不导入真实订阅，也不将其用作系统网络通道。</p></article></div><p class="reader-en start-limits" lang="en">No public release assets currently exist. Platform maturity and actual network takeover remain explicit gates; do not interpret planned platforms as supported products.</p><p class="reader-zh start-limits" lang="zh">当前没有公开发行附件。平台成熟度与实际网络接管仍需明确验收；规划平台不等于已支持产品。</p><div class="start-links"><a class="reader-en" lang="en" href="https://github.com/turinglambdaai/relaypilot/blob/main/docs/USER-GUIDE.md">Installation, privacy &amp; recovery</a><a class="reader-zh" lang="zh" href="https://github.com/turinglambdaai/relaypilot/blob/main/docs/USER-GUIDE.zh-CN.md">安装、隐私与恢复</a><a href="https://github.com/turinglambdaai/relaypilot/issues"><span class="reader-en " lang="en">Get help</span><span class="reader-zh " lang="zh">反馈与帮助</span></a></div>
+</section>
+<footer>
     <div class="footer-content">
       <div class="footer-brand">RelayPilot</div>
       <div class="footer-links">
@@ -128,7 +139,7 @@
       <div class="footer-note" data-en="Local-first · Native · Explainable · © 2026 turinglambdaai" data-zh="Local-first · 原生 · 可解释 · © 2026 turinglambdaai">Local-first · Native · Explainable · © 2026 turinglambdaai</div>
     </div>
   </footer>
-<nav id="product-support" aria-label="Support / 支持"><a href="https://github.com/turinglambdaai/relaypilot/issues"><span class="support-zh">反馈</span><span class="support-en" lang="en">Feedback</span></a> <a href="https://github.com/turinglambdaai/relaypilot/releases"><span class="support-zh">发布与更新</span><span class="support-en" lang="en">Releases</span></a> <a href="https://github.com/turinglambdaai/relaypilot/blob/main/LICENSE"><span class="support-zh">源码许可</span><span class="support-en" lang="en">Source license</span></a> <a class="support-zh" href="https://github.com/turinglambdaai/relaypilot/blob/main/PRICING.zh-CN.md">产品与收费方案</a> <a class="support-en" lang="en" href="https://github.com/turinglambdaai/relaypilot/blob/main/PRICING.md">Product & pricing</a></nav>
+<nav id="product-support" aria-label="Support / 支持"><a href="https://github.com/turinglambdaai/relaypilot/issues"><span class="support-zh">反馈</span><span class="support-en" lang="en">Feedback</span></a> <a href="https://github.com/turinglambdaai/relaypilot/releases"><span class="support-zh">发布与更新</span><span class="support-en" lang="en">Releases</span></a> <a href="https://github.com/turinglambdaai/relaypilot/blob/main/LICENSE"><span class="support-zh">源码许可</span><span class="support-en" lang="en">Source license</span></a> <a class="support-zh" href="https://github.com/turinglambdaai/relaypilot/blob/main/docs/USER-GUIDE.zh-CN.md">使用与帮助</a> <a class="support-en" lang="en" href="https://github.com/turinglambdaai/relaypilot/blob/main/docs/USER-GUIDE.md">Usage & help</a></nav>
 
   <script>
     // Unified language policy: explicit choice wins; otherwise follow system/browser locale.

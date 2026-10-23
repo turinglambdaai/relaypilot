@@ -1,12 +1,18 @@
 # RelayPilot
 
-一套 Profile，覆盖每一台设备。RelayPilot 是面向 macOS、Windows、Linux、iPhone、iPad、Android 和 Apple TV 的 local-first 原生网络工具箱：一套 Racket 控制平面，各平台第一方原生 UI，同样的网络决策与解释体验。
+RelayPilot 是统一网络配置与可解释路由的架构 Alpha。目前提供 Racket 源码 CLI 和受监督的回环引擎纵切；规划中的原生宿主尚不是已发布客户端。
 
 [![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea) ![license](https://img.shields.io/badge/license-Proprietary-red) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C)
 
 [English](README.md) · **中文** · 🌐 [jrtx.site/relaypilot](https://jrtx.site/relaypilot/)
 
 RelayPilot 不是“Xray GUI”。Profile、规则、策略组选择、DNS 意图、连接记录、`DecisionTrace`、诊断、同步边界和 AI 的 typed patch 都属于 RelayPilot。Xray/libXray 只是第一个可替换的协议引擎。
+
+## 开始使用
+
+免费架构实验，不销售、不订阅、不接商业激活；现行源码许可限制仍然有效。 架构 Alpha，已有源码 CLI 与回环引擎纵切。桌面或移动源码基础不等于已发布的 VPN、TUN 或系统全局网络客户端。
+
+[安装、首次使用、隐私与备份恢复](docs/USER-GUIDE.zh-CN.md) · [English](docs/USER-GUIDE.md)
 
 ## 当前已经实现
 
@@ -118,11 +124,3 @@ relaypilot/
 ## 许可证
 
 Copyright © 2026 turinglambdaai。当前尚未授予开源许可证。未来分发第三方 engine 时将分别履行 notice 和源码提供义务。
-
-## 反馈与诊断
-
-问题和建议请使用 [GitHub Issues](https://github.com/turinglambdaai/relaypilot/issues)，附版本、系统/架构和复现步骤。分享前先检查并脱敏诊断；不要公开 API key、授权凭据、密钥库或私有文档。安全敏感问题优先按 SECURITY.md 联系；未提供私密渠道时，先请求私下联系方式，不在公开 issue 中披露敏感细节。此入口不会自动上传数据。
-
-## 产品与收费
-
-实验冻结；不收费。首发目标、免费边界与开卖门禁见 [PRICING.md](PRICING.zh-CN.md)；当前仍在开发，没有实际用户，不表示已开售，也不因此给开发版即时加收费墙。

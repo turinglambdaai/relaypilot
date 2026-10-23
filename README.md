@@ -1,12 +1,18 @@
 # RelayPilot
 
-One profile. Every device. RelayPilot is a local-first network toolbox for macOS, Windows, Linux, iPhone, iPad, Android, and Apple TV — one Racket control plane, first-party native UIs, and the same network decisions everywhere.
+RelayPilot is an architecture alpha for canonical network profiles and explainable routing. It currently provides a Racket source CLI and a supervised loopback engine slice; planned native hosts are not released clients.
 
 [![CI](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml/badge.svg)](https://github.com/turinglambdaai/relaypilot/actions/workflows/ci.yml) ![built with](https://img.shields.io/badge/built%20with-Rivet-9333ea) ![license](https://img.shields.io/badge/license-Proprietary-red) ![stage](https://img.shields.io/badge/stage-architecture%20alpha-C15F3C)
 
 **English** · [中文](README.zh-CN.md) · 🌐 [jrtx.site/relaypilot](https://jrtx.site/relaypilot/)
 
 RelayPilot is not an "Xray GUI." RelayPilot owns profiles, rules, policy selection, DNS intent, connection history, deterministic decision traces, diagnostics, sync boundaries, and typed AI patches. Xray/libXray is the first protocol engine behind an adapter and may later coexist with a native engine or other implementations.
+
+## Start here
+
+Free architecture experiment with no sale, subscription or commercial activation. Existing source licence restrictions remain in force. Architecture alpha with a source CLI and a loopback engine slice. Desktop/mobile source foundations do not constitute released VPN, TUN or system-wide network clients.
+
+[Installation, first use, privacy, backup and recovery](docs/USER-GUIDE.md) · [简体中文](docs/USER-GUIDE.zh-CN.md)
 
 ## What works today
 
@@ -118,11 +124,3 @@ The commercial model is intentionally deferred. The working direction is a one-t
 ## License
 
 Copyright © 2026 turinglambdaai. No open-source license has been granted yet. Third-party engine distributions will carry their own notices and source-offer obligations.
-
-## Feedback and diagnostics
-
-Report reproducible bugs and feature requests through [GitHub Issues](https://github.com/turinglambdaai/relaypilot/issues). Include the release, OS/architecture and steps; inspect and redact diagnostics before sharing. Do not post API keys, license files, vault contents or private documents. For sensitive security reports, follow SECURITY.md when present; otherwise request a private contact route without disclosing sensitive details. Nothing is uploaded automatically.
-
-## Product & pricing
-
-Architecture experiment on hold; not for sale. Read the complete [English pricing and product policy](PRICING.md) or [简体中文](PRICING.zh-CN.md) for target prices, free/paid boundaries and launch gates. This is a launch design, not a live offer; this documentation does not add payment restrictions to current development builds.
