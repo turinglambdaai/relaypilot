@@ -1,1 +1,1 @@
-{"error":"cannot read input: open-input-file: cannot open input file\n  path: {{work}}\n  system error: {{detail}}
+{"error":"{{repo}}/shared/cli-golden/fixtures/malformed.json::29: read-json: bad input starting #\"broken-this-is-not-json\\n\"","exitCode":1,"kind":"validation","ok":false}

@@ -14,5 +14,5 @@ Commands:
 Flow flags: --domain D --ip I --port P --network tcp|udp --source-app S
 Other flags: --out PATH --socks-port N --binary PATH --id ID --name NAME
 
-Exit codes: 0 ok · 1 invalid input · 2 usage · 3 engine failure
+Exit codes: 0 ok | 1 invalid input | 2 usage | 3 engine failure
 Contract: docs/CLI-SPEC.md

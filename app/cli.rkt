@@ -351,7 +351,7 @@
    "Flow flags: --domain D --ip I --port P --network tcp|udp --source-app S\n"
    "Other flags: --out PATH --socks-port N --binary PATH --id ID --name NAME\n"
    "\n"
-   "Exit codes: 0 ok · 1 invalid input · 2 usage · 3 engine failure\n"
+   "Exit codes: 0 ok | 1 invalid input | 2 usage | 3 engine failure\n"
    "Contract: docs/CLI-SPEC.md\n"))
 
 (define known-commands
