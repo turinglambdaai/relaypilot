@@ -1,0 +1,1 @@
+{"ok":true,"profile":{"dns":{},"id":"imported","name":"Imported Profile","nodes":[],"policies":[],"rules":["DOMAIN,api.openai.com,AI","DOMAIN-SUFFIX,openai.com,AI","IP-CIDR,192.168.0.0/16,DIRECT,no-resolve","FINAL,DIRECT"],"schemaVersion":1},"ruleCount":4,"unresolvedPolicies":["AI"]}

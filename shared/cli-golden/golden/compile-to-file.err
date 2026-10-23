@@ -1,0 +1,1 @@
+{"error":"path->string: contract violation\n  expected: path?\n  given: \"{{work}}/config.json\"","exitCode":1,"kind":"validation","ok":false}

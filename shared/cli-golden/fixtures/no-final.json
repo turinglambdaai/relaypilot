@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "no-final",
+  "name": "No Final Rule",
+  "nodes": [],
+  "policies": [],
+  "rules": [
+    "DOMAIN,matched.example.com,DIRECT"
+  ],
+  "dns": {
+    "mode": "system"
+  }
+}

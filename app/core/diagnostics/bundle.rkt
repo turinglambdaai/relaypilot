@@ -9,22 +9,28 @@
         (schema-version trace-id profile-id connection decision engine-events comparable-failures)
   #:transparent)
 
+;; Absent facts are JSON null, never inferred stand-ins (ARCHITECTURE.md).
+(define (absent value)
+  (or value 'null))
+
 (define (trace->diagnostic-bundle trace
                                   #:engine-events [events '()]
                                   #:comparable-failures [failures '()])
+  (define flow (decision-trace-flow trace))
   (diagnostic-bundle 1
                      (decision-trace-trace-id trace)
                      (decision-trace-profile-id trace)
                      (hasheq 'domain
-                             (connection-flow-domain (decision-trace-flow trace))
+                             (absent (connection-flow-domain flow))
                              'ip
-                             (connection-flow-ip (decision-trace-flow trace))
+                             (absent (connection-flow-ip flow))
                              'port
-                             (connection-flow-port (decision-trace-flow trace))
+                             (connection-flow-port flow)
                              'network
-                             (connection-flow-network (decision-trace-flow trace))
+                             (and (connection-flow-network flow)
+                                  (symbol->string (connection-flow-network flow)))
                              'source-app
-                             (connection-flow-source-app (decision-trace-flow trace)))
+                             (absent (connection-flow-source-app flow)))
                      (hasheq 'rule-index
                              (decision-trace-rule-index trace)
                              'rule-source

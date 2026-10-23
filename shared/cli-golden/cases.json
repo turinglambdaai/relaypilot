@@ -1,0 +1,24 @@
+{
+  "cases": [
+    { "name": "version", "args": ["version"] },
+    { "name": "usage-no-args", "args": [] },
+    { "name": "usage-help-flag", "args": ["--help"] },
+    { "name": "unknown-command", "args": ["bogus"] },
+    { "name": "validate-ok", "args": ["validate", "{{repo}}/examples/relay-profile.json"] },
+    { "name": "validate-missing-file", "args": ["validate", "{{work}}/does-not-exist.json"] },
+    { "name": "validate-duplicate-node-ids", "args": ["validate", "{{repo}}/shared/cli-golden/fixtures/bad-profile.json"] },
+    { "name": "validate-malformed-json", "args": ["validate", "{{work}}"] },
+    { "name": "decide-exact-domain", "args": ["decide", "{{repo}}/examples/relay-profile.json", "--domain", "api.openai.com", "--port", "443"] },
+    { "name": "decide-final-fallback", "args": ["decide", "{{repo}}/examples/relay-profile.json", "--domain", "nomatch.example.net", "--ip", "203.0.113.7", "--network", "udp"] },
+    { "name": "decide-no-rule-matched", "args": ["decide", "{{repo}}/shared/cli-golden/fixtures/no-final.json", "--domain", "unmatched.example.net"] },
+    { "name": "decide-missing-flow", "args": ["decide", "{{repo}}/examples/relay-profile.json"] },
+    { "name": "compile-to-stdout", "args": ["compile", "{{repo}}/examples/relay-profile.json"] },
+    { "name": "compile-to-file", "args": ["compile", "{{repo}}/examples/relay-profile.json", "--out", "{{work}}/config.json"] },
+    { "name": "compile-invalid-socks-port", "args": ["compile", "{{repo}}/examples/relay-profile.json", "--socks-port", "0"] },
+    { "name": "import-surge-ok", "args": ["import-surge", "{{repo}}/examples/surge-rules.list", "--id", "imported", "--name", "Imported Profile"] },
+    { "name": "import-surge-unsupported-kind", "args": ["import-surge", "{{repo}}/shared/cli-golden/fixtures/unsupported-rules.list", "--id", "imported"] },
+    { "name": "import-surge-missing-id", "args": ["import-surge", "{{repo}}/examples/surge-rules.list"] },
+    { "name": "dry-run-without-engine", "args": ["dry-run", "{{repo}}/examples/relay-profile.json"] },
+    { "name": "diagnose-redacts-and-reports", "args": ["diagnose", "{{repo}}/examples/relay-profile.json", "--domain", "api.openai.com", "--port", "443"] }
+  ]
+}

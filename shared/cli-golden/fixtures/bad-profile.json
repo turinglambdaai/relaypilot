@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "bad-profile",
+  "name": "Bad Profile",
+  "nodes": [
+    {
+      "id": "dup",
+      "name": "First",
+      "protocol": "vless",
+      "address": "a.example.invalid",
+      "port": 443,
+      "credentials": {
+        "id": "00000000-0000-0000-0000-00000000000a"
+      },
+      "transport": {
+        "network": "raw"
+      },
+      "tls": {
+        "security": "none"
+      }
+    },
+    {
+      "id": "dup",
+      "name": "Second",
+      "protocol": "vless",
+      "address": "b.example.invalid",
+      "port": 8443,
+      "credentials": {
+        "id": "00000000-0000-0000-0000-00000000000b"
+      },
+      "transport": {
+        "network": "raw"
+      },
+      "tls": {
+        "security": "none"
+      }
+    }
+  ],
+  "policies": [],
+  "rules": [
+    "FINAL,DIRECT"
+  ],
+  "dns": {}
+}

@@ -10,6 +10,9 @@ permissions:
 jobs:
   racket:
     runs-on: ubuntu-24.04
+    env:
+      XRAY_VERSION: v26.3.27
+      XRAY_SHA256: 23cd9af937744d97776ee35ecad4972cf4b2109d1e0fe6be9930467608f7c8ae
     steps:
       - uses: actions/checkout@v4
       - uses: Bogdanp/setup-racket@v1.14
@@ -18,14 +21,13 @@ jobs:
           architecture: x64
       - name: Install package
         run: raco pkg install --auto --no-docs --name relaypilot "$GITHUB_WORKSPACE"
+      - name: Check release identity
+        run: scripts/check-release-version.sh
+      - name: Check third-party notice pin
+        run: racket scripts/third-party-notices.rkt --check
       - name: Compile Rivet backend
         run: raco make app/backend.rkt
-      - name: Test
-        run: raco test tests/
-      - name: Validate generated config with pinned Xray
-        env:
-          XRAY_VERSION: v26.3.27
-          XRAY_SHA256: 23cd9af937744d97776ee35ecad4972cf4b2109d1e0fe6be9930467608f7c8ae
+      - name: Download pinned Xray
         run: |
           mkdir -p "$RUNNER_TEMP/relaypilot-xray"
           curl --fail --location --retry 3 \
@@ -33,8 +35,18 @@ jobs:
             --output "$RUNNER_TEMP/relaypilot-xray/xray.zip"
           echo "${XRAY_SHA256}  $RUNNER_TEMP/relaypilot-xray/xray.zip" | sha256sum --check
           unzip -q "$RUNNER_TEMP/relaypilot-xray/xray.zip" -d "$RUNNER_TEMP/relaypilot-xray/runtime"
-          racket scripts/compile-profile.rkt \
-            examples/relay-profile.json \
-            "$RUNNER_TEMP/relaypilot-xray/config.json"
+      - name: Test
+        env:
+          RELAYPILOT_XRAY_BIN: ${{ runner.temp }}/relaypilot-xray/runtime/xray
+        run: raco test tests/
+      - name: Golden CLI suite
+        run: python3 shared/cli-golden/runner.py --binary scripts/relaypilot-cli.sh
+      - name: Validate generated config with pinned Xray
+        env:
+          RELAYPILOT_XRAY_BIN: ${{ runner.temp }}/relaypilot-xray/runtime/xray
+        run: |
+          scripts/relaypilot-cli.sh dry-run examples/relay-profile.json
+          scripts/relaypilot-cli.sh compile examples/relay-profile.json \
+            --out "$RUNNER_TEMP/relaypilot-xray/config.json"
           "$RUNNER_TEMP/relaypilot-xray/runtime/xray" run -test \
             -config "$RUNNER_TEMP/relaypilot-xray/config.json"

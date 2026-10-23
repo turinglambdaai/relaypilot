@@ -1,0 +1,18 @@
+RelayPilot — deterministic relay profile control plane
+
+Usage: relaypilot <command> [arguments]
+
+Commands:
+  version                              Print release identity as JSON
+  validate <profile.json>              Validate a Relay Profile ("-" reads stdin)
+  decide <profile.json> [flow]         Explain one connection as a DecisionTrace
+  compile <profile.json> [flags]       Compile the engine artifact
+  dry-run <profile.json> [flags]       Compile and validate with the engine binary
+  import-surge <rules.list> [flags]    Import Surge rule lines into a profile skeleton
+  diagnose <profile.json> [flow]       Emit a redacted DiagnosticBundle
+
+Flow flags: --domain D --ip I --port P --network tcp|udp --source-app S
+Other flags: --out PATH --socks-port N --binary PATH --id ID --name NAME
+
+Exit codes: 0 ok · 1 invalid input · 2 usage · 3 engine failure
+Contract: docs/CLI-SPEC.md

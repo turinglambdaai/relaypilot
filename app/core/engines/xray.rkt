@@ -2,6 +2,7 @@
 
 (require racket/list
          racket/string
+         "../errors.rkt"
          "../json.rkt"
          "../model.rkt"
          "interface.rkt"
@@ -12,6 +13,14 @@
          xray-config-jsexpr)
 
 (define adapter-version "xray-json-v1")
+(define default-socks-port 1080)
+
+(define (checked-socks-port socks-port)
+  (unless (and (exact-integer? socks-port) (<= 1 socks-port 65535))
+    (raise-relaypilot 'validation
+                      1
+                      (format "socks port must be an integer in [1, 65535], got ~a" socks-port)))
+  socks-port)
 (define hex-digits "0123456789abcdef")
 
 (define (bytes->hex value)
@@ -120,7 +129,7 @@
              'outboundTag
              (hash-ref entry 'outbound)))
 
-(define (xray-config-jsexpr profile)
+(define (xray-config-jsexpr profile [socks-port default-socks-port])
   (define plan (profile->engine-plan profile))
   (hasheq 'log
           (hasheq 'loglevel "warning")
@@ -130,7 +139,7 @@
                         'listen
                         "127.0.0.1"
                         'port
-                        1080
+                        (checked-socks-port socks-port)
                         'protocol
                         "socks"
                         'settings
@@ -144,9 +153,9 @@
           'routing
           (hasheq 'domainStrategy "AsIs" 'rules (map route-entry->xray (engine-plan-routing plan)))))
 
-(define (compile-xray-config profile)
+(define (compile-xray-config profile [socks-port default-socks-port])
   (define plan (profile->engine-plan profile))
-  (define bytes (jsexpr->canonical-bytes (xray-config-jsexpr profile)))
+  (define bytes (jsexpr->canonical-bytes (xray-config-jsexpr profile socks-port)))
   (compiled-engine-config 'xray
                           adapter-version
                           bytes
@@ -158,7 +167,14 @@
                                   'execution-boundary
                                   "not-started"
                                   'xray-config-contract
-                                  "official docs snapshot 2026-10-08")))
+                                  "official docs snapshot 2026-10-08"
+                                  'inbound
+                                  (hasheq 'listen
+                                          "127.0.0.1"
+                                          'port
+                                          (checked-socks-port socks-port)
+                                          'protocol
+                                          "socks"))))
 
 (define xray-engine-adapter
   (engine-adapter 'xray

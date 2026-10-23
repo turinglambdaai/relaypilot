@@ -1,0 +1,4 @@
+# One supported line, one kind the first adapter slice does not take.
+DOMAIN,api.example.com,AI
+DOMAIN-KEYWORD,ads,REJECT
+FINAL,DIRECT

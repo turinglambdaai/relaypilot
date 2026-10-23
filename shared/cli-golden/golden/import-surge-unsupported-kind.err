@@ -1,0 +1,1 @@
+{"error":"parse-surge-rule: unsupported Surge rule kind\n  source: \"{{repo}}/shared/cli-golden/fixtures/unsupported-rules.list\"\n  line: 3\n  kind: \"DOMAIN-KEYWORD\"","exitCode":1,"kind":"validation","ok":false}

@@ -37,5 +37,33 @@
 (check-equal? (string-length (list-ref compiled 2)) 64)
 (check-regexp-match #rx"\"ruleTag\":\"relaypilot:1\"" (list-ref compiled 3))
 
+;; Engine RPCs need the pinned binary; they are exercised when one is
+;; configured and skipped with the reason otherwise.
+(define engine-binary
+  (let ([from-env (getenv "RELAYPILOT_XRAY_BIN")])
+    (and from-env (not (string=? from-env "")) (file-exists? from-env) from-env)))
+
+(when engine-binary
+  (define loopback-json
+    "{\"schemaVersion\":1,\"id\":\"loopback\",\"name\":\"Loopback\",\"nodes\":[],\"policies\":[],\"rules\":[\"FINAL,DIRECT\"],\"dns\":{}}")
+  (define dry-run (call "engine-dry-run" sample-profile-json 1080))
+  (check-equal? (list-ref dry-run 0) "xray")
+  (check-equal? (list-ref dry-run 3) #t)
+  (check-equal? (list-ref dry-run 4) #t)
+  (check-regexp-match #rx"^26[.]" (list-ref dry-run 5))
+
+  (define handle (call "engine-session-start" loopback-json 0))
+  (check-regexp-match #rx"^xray-" (list-ref handle 0))
+  (check-true (exact-positive-integer? (list-ref handle 1)))
+  (check-regexp-match #rx"^26[.]" (list-ref handle 2))
+  (define events (call "engine-session-events" (list-ref handle 0)))
+  (check-true (list? events))
+  (define stopped (call "engine-session-stop" (list-ref handle 0)))
+  (check-equal? (list-ref stopped 0) #t)
+  (check-equal? (list-ref stopped 1) "0")
+  (check-true (positive? (length (list-ref stopped 2))))
+  (define unknown (call "engine-session-stop" "xray-nope"))
+  (check-equal? (list-ref unknown 0) #f))
+
 (write-frame (frame message:shutdown 0 #"") client-out)
 (thread-wait server-thread)
